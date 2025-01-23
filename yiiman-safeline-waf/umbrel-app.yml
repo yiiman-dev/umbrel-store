@@ -5,7 +5,7 @@ tagline: Expose your services easily and securely.
 category: networking
 version: "7.5.0"
 port: 50081
-icon: https://raw.githubusercontent.com/yiiman-dev/umbrel-store/master/safeline-waf/icon.png
+icon: https://raw.githubusercontent.com/yiiman-dev/umbrel-store/master/yiiman-safeline-waf/icon.png
 description: >-
   Expose your apps to the internet easily and securely.
 

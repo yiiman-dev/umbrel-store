@@ -28,7 +28,7 @@ services:
     container_name: yiiman-safeline-mgt-1
     restart: always
 
-    image: chaitin/safeline-mgt-g-lts:7.5.0
+    image: chaitin/safeline-mgt-g:7.5.0
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${APP_DATA_DIR}/safeline/resources/mgt:/app/data
@@ -53,7 +53,7 @@ services:
   detect:
     container_name: safeline-detector
     restart: always
-    image: chaitin/safeline/safeline-detector-g-lts:7.5.0
+    image: chaitin/safeline/safeline-detector-g:7.5.0
     volumes:
       - ${APP_DATA_DIR}/safeline/resources/detector:/resources/detector
       - ${APP_DATA_DIR}/safeline/logs/detector:/logs/detector
@@ -66,7 +66,7 @@ services:
   tengine:
     container_name: safeline-tengine
     restart: always
-    image: chaitin/safeline-tengine-g-lts:7.5.0
+    image: chaitin/safeline-tengine-g:7.5.0
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/resolv.conf:/etc/resolv.conf:ro
@@ -88,7 +88,7 @@ services:
   luigi:
     container_name: safeline-luigi
     restart: always
-    image: chaitin/safeline-luigi-g-lts:7.5.0
+    image: chaitin/safeline-luigi-g:7.5.0
     environment:
       - MGT_IP=172.22.222.4
       - LUIGI_PG=postgres://safeline-ce:safeline-ce@safeline-pg/safeline-ce?sslmode=disable
@@ -109,7 +109,7 @@ services:
   fvm:
     container_name: safeline-fvm
     restart: always
-    image: chaitin/safeline-fvm-g-lts:7.5.0
+    image: chaitin/safeline-fvm-g:7.5.0
     volumes:
       - /etc/localtime:/etc/localtime:ro
     logging:
@@ -123,7 +123,7 @@ services:
   chaos:
     container_name: safeline-chaos
     restart: always
-    image: chaitin/safeline-chaos-g-lts:7.5.0
+    image: chaitin/safeline-chaos-g:7.5.0
     logging:
       driver: "json-file"
       options:

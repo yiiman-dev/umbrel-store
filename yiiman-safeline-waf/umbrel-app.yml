@@ -1,5 +1,5 @@
 manifestVersion: 1
-id: safeline-waf
+id: yiiman-safeline-waf
 name: SafeLine Firewall and Nginx
 tagline: Expose your services easily and securely.
 category: networking

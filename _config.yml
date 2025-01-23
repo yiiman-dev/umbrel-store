@@ -4,4 +4,4 @@ plugins:
 - jekyll-remote-theme
 title: YiiMan UmbrelOS App Repo
 description: YiiMan UmbrelOS App Repo Is Built To Help Users Expand Their Already Expanding Cloud Using UmbrelOS
-show_downloads: yes
+show_downloads: no

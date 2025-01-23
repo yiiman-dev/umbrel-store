@@ -58,6 +58,6 @@ Fixed:
  
   Full release notes and are available at https://github.com/chaitin/SafeLine/releases
 dependencies: []
-path: "/"
+path: ""
 defaultUsername: "admin"
 defaultPassword: ""

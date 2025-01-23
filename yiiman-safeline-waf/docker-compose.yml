@@ -3,7 +3,7 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: yiiman-safeline-waf_mgt_1
+      APP_HOST: yiiman-safeline-mgt-1
       APP_PORT: 1443
 
 
@@ -25,9 +25,9 @@ services:
     healthcheck:
       test: pg_isready -U safeline-ce -d safeline-ce
   mgt:
-    container_name: yiiman-safeline-mgt
+    container_name: yiiman-safeline-mgt-1
     restart: always
-    hostname: safeline-waf_mgt_1
+
     image: chaitin/safeline-mgt-g-lts:7.5.0
     volumes:
       - /etc/localtime:/etc/localtime:ro

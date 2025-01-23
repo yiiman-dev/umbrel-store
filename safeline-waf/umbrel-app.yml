@@ -1,9 +1,9 @@
 manifestVersion: 1
 id: safeline-waf
 name: SafeLine Firewall and Nginx
-tagline: Expose your services easily and securely
+tagline: Expose your services easily and securely.
 category: networking
-version: "CE 7.5.0"
+version: "7.5.0"
 port: 50081
 icon: https://raw.githubusercontent.com/yiiman-dev/umbrel-store/master/safeline-waf/icon.png
 description: >-
@@ -27,9 +27,9 @@ description: >-
     - HTML & JS code encryption
     - IP-based rate limiting
     - Web Access Control List
-developer: YiiMan
+developer: chaitin
 website: https://waf.chaitin.com/
-submitter: Sahil Phule
+submitter: YiiMan
 submission: https://github.com/getumbrel/umbrel-apps/pull/1296
 repo: https://github.com/chaitin/safeline
 support: https://github.com/chaitin/SafeLine/issues

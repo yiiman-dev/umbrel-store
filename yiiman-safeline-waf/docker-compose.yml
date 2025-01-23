@@ -47,7 +47,7 @@ services:
   detect:
     container_name: safeline-detector
     restart: always
-    image: chaitin/safeline/safeline-detector-g:7.5.0
+    image: chaitin/safeline-detector-g:7.5.0
     volumes:
       - ${APP_DATA_DIR}/safeline/resources/detector:/resources/detector
       - ${APP_DATA_DIR}/safeline/logs/detector:/logs/detector
@@ -57,7 +57,7 @@ services:
   tengine:
     container_name: safeline-tengine
     restart: always
-    image: chaitin/safeline-tengine-g:7.5.0
+    image: chaitin/safeline-tengine:7.5.0
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/resolv.conf:/etc/resolv.conf:ro

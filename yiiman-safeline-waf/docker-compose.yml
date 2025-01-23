@@ -18,9 +18,6 @@ services:
     environment:
       - POSTGRES_USER=safeline-ce
       - POSTGRES_PASSWORD=safeline-ce
-    networks:
-      safeline-ce:
-        ipv4_address: 172.22.222.2
     command: [postgres, -c, max_connections=600]
     healthcheck:
       test: pg_isready -U safeline-ce -d safeline-ce
@@ -47,9 +44,6 @@ services:
       options:
         max-size: "100m"
         max-file: "5"
-    networks:
-      safeline-ce:
-        ipv4_address: 172.22.222.4
   detect:
     container_name: safeline-detector
     restart: always
@@ -60,9 +54,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       - LOG_DIR=/logs/detector
-    networks:
-      safeline-ce:
-        ipv4_address: 172.22.222.5
   tengine:
     container_name: safeline-tengine
     restart: always
@@ -77,11 +68,11 @@ services:
       - ${APP_DATA_DIR}/safeline/resources/cache:/usr/local/nginx/cache
       - ${APP_DATA_DIR}/safeline/resources/sock:/app/sock
     environment:
-      - TCD_MGT_API=https://172.22.222.4:1443/api/open/publish/server
-      - TCD_SNSERVER=172.22.222.5:8000
+      - TCD_MGT_API=https://yiiman-safeline-mgt-1:1443/api/open/publish/server
+      - TCD_SNSERVER=safeline-detector:8000
       # deprecated
-      - SNSERVER_ADDR=172.22.222.5:8000
-      - CHAOS_ADDR=172.22.222.10
+      - SNSERVER_ADDR=safeline-detector:8000
+      - CHAOS_ADDR=safeline-chaos
     ulimits:
       nofile: 131072
     network_mode: host
@@ -90,7 +81,7 @@ services:
     restart: always
     image: chaitin/safeline-luigi-g:7.5.0
     environment:
-      - MGT_IP=172.22.222.4
+      - MGT_IP=yiiman-safeline-mgt-1
       - LUIGI_PG=postgres://safeline-ce:safeline-ce@safeline-pg/safeline-ce?sslmode=disable
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -103,9 +94,6 @@ services:
     depends_on:
       - detect
       - mgt
-    networks:
-      safeline-ce:
-        ipv4_address: 172.22.222.7
   fvm:
     container_name: safeline-fvm
     restart: always
@@ -117,9 +105,6 @@ services:
       options:
         max-size: "100m"
         max-file: "5"
-    networks:
-      safeline-ce:
-        ipv4_address: 172.22.222.8
   chaos:
     container_name: safeline-chaos
     restart: always
@@ -134,19 +119,6 @@ services:
     volumes:
       - ${APP_DATA_DIR}/safeline/resources/sock:/app/sock
       - ${APP_DATA_DIR}/safeline/resources/chaos:/app/chaos
-    networks:
-      safeline-ce:
-        ipv4_address: 172.22.222.10
+
 
         
-networks:
-  safeline-ce:
-    name: safeline-ce
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - gateway: 172.22.222.1
-          subnet: 172.22.222.0/24
-    driver_opts:
-      com.docker.network.bridge.name: safeline-ce
